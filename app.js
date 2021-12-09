@@ -59,12 +59,12 @@ friendInputEl.addEventListener('keyup', () => {
 
 addMushroomButton.addEventListener('click', () => {
     if (Math.random() > .5) {
-        alert('found a mushroom!');
+        alert(`You foraged for ${Math.ceil(Math.random() * 8)} hours and found one mushroom!`);
 
         mushroomCount++;
         displayMushrooms();
     } else {
-        alert('no luck!');
+        alert(`You foraged for ${Math.ceil(Math.random() * 8)} hours and didn't find any mushrooms!`);
     }
 });
 
@@ -81,7 +81,9 @@ function displayFriends() {
         //     add an event listener to each friend
         friendEl.addEventListener('click', () => {
             const foundFriend = findFriendByName(friend.name, friendData);
-            if (foundFriend.satisfaction < 3 && mushroomCount > 0) {
+            if (mushroomCount <= 0) {
+                alert('No more mushrooms. Go forage some!');
+            } else if (foundFriend.satisfaction < 3 && mushroomCount > 0) {
                 foundFriend.satisfaction++;
                 mushroomCount--;
             }
