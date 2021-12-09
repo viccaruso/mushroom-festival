@@ -33,12 +33,19 @@ const friendData = [
 
 addFriendButton.addEventListener('click', () => {
     // get the name from the input
+    const name = friendInputEl.value;
     // create a new friend object
-    
+    const newFriend = {
+        name: name,
+        satisfaction: Math.ceil(Math.random() * 3)
+    };
     // push it into the friends state array, passed in as an argument
-
+    friendData.push(newFriend);
     // reset the input
+    friendInputEl.value = '';
     // display all the friends (use a function here)
+    //displayFriends();
+    console.log(friendData);
 });
 
 
@@ -53,14 +60,16 @@ addMushroomButton.addEventListener('click', () => {
     }
 });
 
-
+// <-------------------> left off here
 function displayFriends() {
     // clear out the friends in DOM
-
+    while (friendsEl.firstChild) {
+        friendsEl.firstChild.remove();
+    }
     // for each friend in state . . .
     for (let friend of friendData) {
         const friendEl = renderFriend(friend);
-
+        
         // this is a clickable list, so . . .
         //     add an event listener to each friend
         //         on click, go find the clicked friend in state
