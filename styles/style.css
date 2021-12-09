@@ -186,6 +186,8 @@ footer {
     border: none;
     font-size: 2rem;
     border-radius: 10px;
+    margin-top: 1rem;
+    font-size: medium;
 }
 
 .mushrooms {
