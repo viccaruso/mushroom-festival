@@ -32,24 +32,21 @@ const friendData = [
 
 
 addFriendButton.addEventListener('click', () => {
-    if (friendInputEl.value) {
-        // get the name from the input
-        const name = friendInputEl.value;
-        // create a new friend object
-        const newFriend = {
-            name: name,
-            satisfaction: Math.ceil(Math.random() * 3)
-        };
-        // push it into the friends state array, passed in as an argument
-        friendData.push(newFriend);
-        // reset the input
-        friendInputEl.value = '';
-        addFriendButton.textContent = 'Invite another friend!';
-        // display all the friends (use a function here)
-        displayFriends();
-    } else {
-        addFriendButton.textContent = 'Enter a friend\'s name below!';
-    }
+    // get the name from the input
+    const name = friendInputEl.value;
+    // create a new friend object
+    const newFriend = {
+        name: (name === '') ? `Friend #${Math.floor(Math.random() * 5000)}` : name,
+        satisfaction: Math.ceil(Math.random() * 3)
+    };
+    // push it into the friends state array, passed in as an argument
+    friendData.push(newFriend);
+    // reset the input
+    friendInputEl.value = '';
+    addFriendButton.textContent = 'Invite another friend!';
+    // display all the friends (use a function here)
+    displayFriends();
+
 });
 
 friendInputEl.addEventListener('keyup', () => {
